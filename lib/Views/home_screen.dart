@@ -30,9 +30,10 @@ class _HomeState extends State<Home> {
     return Scaffold(
       // extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Color(0xff1e0b74),
+        backgroundColor: const Color(0xff1e0b74),
         elevation: 0,
-        title: Text(
+        automaticallyImplyLeading: false,
+        title: const Text(
           "CHATMOD",
           style: TextStyle(
             color: Colors.white,
@@ -128,7 +129,7 @@ class _HomeState extends State<Home> {
                     Expanded(
                       child: TextField(
                         controller: _controller,
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                         decoration: const InputDecoration(
                           hintText: "Write your message",
                           hintStyle: TextStyle(color: Colors.grey),
@@ -161,15 +162,17 @@ class _HomeState extends State<Home> {
                           )
                         : IconButton(
                             onPressed: () {
-                              _sendMessage(Message(
-                                text: _controller.text,
-                                isUser: true,
-                                image: _selectedImage?.path,
-                              ));
-                              _controller.clear();
-                              setState(() {
-                                _selectedImage = null;
-                              });
+                              if (_controller.text.isNotEmpty) {
+                                _sendMessage(Message(
+                                  text: _controller.text,
+                                  isUser: true,
+                                  image: _selectedImage?.path,
+                                ));
+                                _controller.clear();
+                                setState(() {
+                                  _selectedImage = null;
+                                });
+                              }
                             },
                             icon: const Icon(
                               Icons.send,

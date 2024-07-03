@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, use_full_hex_values_for_flutter_colors, prefer_const_literals_to_create_immutables
+
 import 'package:chatmod/model/messages.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -17,7 +19,6 @@ class MessageBox extends StatelessWidget {
                 color: Color.fromARGB(151, 70, 76, 82),
                 // color: Color.fromRGBO(160, 21, 67, 0.822),
                 // color: Color(0xff1A1F24),
-
                 borderRadius: const BorderRadius.only(
                   bottomRight: Radius.circular(20),
                   bottomLeft: Radius.circular(20),
@@ -35,7 +36,7 @@ class MessageBox extends StatelessWidget {
         : Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (!message.isUser) // If message is from chatbot
+              // If message is from chatbot
                 CircleAvatar(
                   radius: 25,
                   backgroundColor: Colors.transparent,

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:chatmod/Views/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -70,16 +72,19 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 height: 50,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Color(0xffcc2b5e), Color(0xff753a88)],
-                    stops: [0, 1],
+                    colors: const [Color(0xffcc2b5e), Color(0xff753a88)],
+                    stops: const [0, 1],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   ),
                   borderRadius: BorderRadius.circular(50),
                 ),
                 child: IconButton(
-                    onPressed: () => Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Home())),
+                    onPressed: () => Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => Home()),
+                          (Route<dynamic> route) => false,
+                        ),
                     icon: Icon(
                       Icons.arrow_forward,
                       color: Colors.white,
